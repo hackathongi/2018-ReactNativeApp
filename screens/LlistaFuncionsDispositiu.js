@@ -22,6 +22,7 @@ export default class LlistaFuncionsDispositius extends React.Component{
         this._getActions()
     }
     render(){
+        const {actions} = this.state
         return(
             <View>
                 <List
@@ -40,7 +41,7 @@ export default class LlistaFuncionsDispositius extends React.Component{
             const res = await fetch(`http://192.192.193.155:5000/hub/`)
             const responseJson = await res.json()
 
-            const { actions: cunrrentActions } = responseJson[this.props.navigation.state.id]
+            const { actions: cunrrentActions } = responseJson[this.props.navigation.state.params.id]
 
             let actions = []
             let index = 0
@@ -52,7 +53,7 @@ export default class LlistaFuncionsDispositius extends React.Component{
                     actionName: 'Envia',
                     onAction: async () =>{
                         try{
-                            const res = await fetch(`http://192.192.193.155:5000/${this.props.navigation.state.id}/${action}`)            
+                            const res = await fetch(`http://192.192.193.155:5000/fieware/${this.props.navigation.state.params.id}/${action}`)            
                         }
                         catch(error){
                             console.log('Error' . error) 
@@ -62,10 +63,11 @@ export default class LlistaFuncionsDispositius extends React.Component{
 
                 index++
             }
-            
+            console.log(actions)
             this.setState({
                 actions
             })
+
         }
         catch(error){
             console.log('Error' . error) 
