@@ -3,8 +3,8 @@ import { Image, TouchableHighlight, View } from 'react-native'
 import { withNavigation } from 'react-navigation';
 import styled from 'styled-components'
 
-import ItemInfo from './ItemInfo'
 import Icon from './Icon'
+import Label from './Label'
 
 export class ListItem extends React.Component{
     static Wrapper = TouchableHighlight
@@ -14,9 +14,7 @@ export class ListItem extends React.Component{
         flex-direction: row;
         align-items: center;
         padding: 16px;
-    `
-
-    static Info = ItemInfo
+    ` 
 
     static IconBox = styled.View`
         width: 60px;
@@ -24,7 +22,7 @@ export class ListItem extends React.Component{
 
         margin-right: 16px; 
 
-        background-color: palevioletred;
+        background-color: #8A5AED;
         border-radius: 3px;
     `
 
@@ -33,11 +31,13 @@ export class ListItem extends React.Component{
         return(
             <ListItem.Wrapper onPress={() => navigation.navigate('LlistaFuncionsDispositiu')} >
                 <ListItem.Content>
-                        <ListItem.IconBox />
-                        <ListItem.Info 
-                            title={title}
-                            subtitle={subtitle}    
-                        />
+                    <ListItem.IconBox>
+                        <Icon gliph={'persiana'}/>
+                    </ListItem.IconBox>
+                    <View>
+                        <Label>{title}</Label>
+                        <Label secondary>{subtitle}</Label>
+                    </View>
                 </ListItem.Content>
             </ListItem.Wrapper >
         )

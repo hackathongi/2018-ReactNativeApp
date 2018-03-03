@@ -2,15 +2,25 @@ import React from 'react'
 import { View,Image } from 'react-native'
 import styled from 'styled-components'
 
-export default class Icon extends React.Component{
+import SvgUri from 'react-native-svg-uri'
 
+const availableIcons = {
+    'persiana': require(`../assets/icons/persiana.svg`)
+}
+
+export default class Icon extends React.Component{
     render(){
+        const { gliph } = this.props
         return(
-            <Image
-                width='60'
-                height='60'
-                source={require('../img/persiana.png')}
-            />
+            <View>
+                {availableIcons[gliph] &&
+                    <SvgUri
+                        width="60"
+                        height="60"
+                        source={availableIcons[gliph]}
+                    />
+                }
+            </View>
         )
     }
 }

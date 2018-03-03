@@ -3,7 +3,6 @@ import { Image, TouchableHighlight, View } from 'react-native'
 import { withNavigation } from 'react-navigation';
 import styled from 'styled-components'
 import ItemInfo from './ItemInfo'
-import Icon from './Icon'
 
 export class ListFunctions extends React.Component{
 
