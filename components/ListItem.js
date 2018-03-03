@@ -8,7 +8,10 @@ export default class ListItem extends React.Component{
     render(){
         return(
             <View>
-                <ItemInfo />
+                <ItemInfo 
+                    title={this.props.value.title}
+                    subtitle={this.props.value.subtitle}    
+                />
                 {/**<Image />*/}
             </View>
         )

@@ -10,8 +10,8 @@ export default class ItemInfo extends React.Component{
         return(
             <View>
                 {/**<Image />*/}
-                <Text>lololo</Text>
-                <Text>80:80:40:40</Text>
+                <Text>{this.props.title}</Text>
+                <Text>{this.props.subtitle}</Text>
             </View>
         )
     }
