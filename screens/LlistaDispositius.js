@@ -8,6 +8,17 @@ import { parse } from 'url';
 import List from '../components/List'
 import ListItem from '../components/ListItem'
 
+const SensorWrapper = styled.View`
+    display: flex;
+    flex-direction: column;
+`
+
+const SensorData = styled.View`
+    display: flex; 
+    flex-direction: column;
+    justify-content: space-between;
+`
+
 export default class LlistaDispositius extends React.Component{
     static Wrapper = styled.View`
         height: 100%;
@@ -18,7 +29,33 @@ export default class LlistaDispositius extends React.Component{
 
         this.state = {
             devices: [],
-            sensorsData: null
+            sensorsData: {
+                "distancia": {
+                    "type": "Integer",
+                    "value": 124,
+                    "metadata": {}
+                    },
+                    "estatPorta": {
+                    "type": "Integer",
+                    "value": 1,
+                    "metadata": {}
+                    },
+                    "fotoresistencia": {
+                    "type": "Float",
+                    "value": 149,
+                    "metadata": {}
+                    },
+                    "so": {
+                    "type": "Integer",
+                    "value": 0,
+                    "metadata": {}
+                    },
+                    "temperatura": {
+                    "type": "Float",
+                    "value": 35,
+                    "metadata": {}
+                    }
+            }
         }
     }
 
@@ -30,28 +67,28 @@ export default class LlistaDispositius extends React.Component{
         const { devices, sensorsData } = this.state
         return(
             <LlistaDispositius.Wrapper>
-                <View>
-                    <View>
+                <SensorWrapper>
+                    <SensorData>
                         <Text>Llum:</Text>
                         <Text>{sensorsData.fotoresistencia.value}</Text>
-                    </View>
-                    <View>
+                    </SensorData>
+                    <SensorData>
                         <Text>Temperatura:</Text>
                         <Text>{sensorsData.temperatura.value}</Text>
-                    </View>
-                    <View>
+                    </SensorData>
+                    <SensorData>
                         <Text>Distància:</Text>
                         <Text>{sensorsData.distancia.value}</Text>
-                    </View>
-                    <View>
+                    </SensorData>
+                    <SensorData>
                         <Text>Sò:</Text>
                         <Text>{sensorsData.so.value}</Text>
-                    </View>
-                    <View>
+                    </SensorData>
+                    <SensorData>
                         <Text>Estat porta:</Text>
                         <Text>{sensorsData.estatPorta.value}</Text>
-                    </View>
-                </View>
+                    </SensorData>
+                </SensorWrapper>
                 <List
                     data={devices}
                     keyExtractor={device => device.id}
@@ -72,7 +109,7 @@ export default class LlistaDispositius extends React.Component{
             
             const devices = responseJson.map((deviceData, index) => {
                 if (deviceData.id === 'sensors') {
-                    sesorsData = deviceData
+                    sensorsData = deviceData
                 }
 
                 return {
