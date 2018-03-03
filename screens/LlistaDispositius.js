@@ -8,7 +8,7 @@ export default class LlistaDispositius extends React.Component{
     render(){
         return(
             <View>
-                <List />
+                <List type='dispositius'/>
             </View>
         )
     }

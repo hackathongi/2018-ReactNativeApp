@@ -1,7 +1,8 @@
 import React from 'react'
-import { FlatList, View } from 'react-native'
+import { FlatList,TouchableHighlight, View } from 'react-native'
 import styled from 'styled-components'
 import ListItem from './ListItem'
+import ListFuncions from './ListFunctions'
 
 export default class List extends React.Component{
     state = {
@@ -9,7 +10,8 @@ export default class List extends React.Component{
     }
 
     componentWillMount(){
-        this._getDispositius()
+        if(this.props.type=='dispositius') this._getDispositiusAPI()
+        else this._getDispositius()
     }
 
     _keyExtractor = (item, index) => item.id;
@@ -48,8 +50,24 @@ export default class List extends React.Component{
                 "title": "sorpresa",
                 "subtitle": "01:02:03:06"
             }]
-        });
-        
-      }
+        });    
+    }
+
+    _getDispositiusAPI = () =>{
+    try{
+        (async () => {
+            const res = await fetch(`http://84.89.60.4/v2/entities`)
+            const responseJson = await res.json()
+            
+            dispositius_json = JSON.parse(JSON.stringify(responseJson))
+            this.setState({
+                dispositius:dispositius_json
+            });
+        })()
+        }
+        catch(error){
+            console.log('Error' . error) 
+        }
+    }
 
 }

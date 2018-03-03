@@ -1,5 +1,5 @@
 import React from 'react'
-import { Image, Text, View } from 'react-native'
+import { Image, Text,TouchableHighlight, View } from 'react-native'
 import styled from 'styled-components'
 import Icon from './Icon'
 
@@ -11,11 +11,10 @@ export default class ItemInfo extends React.Component{
 
     render(){
         return(
-            <BlackView >
-                <Icon/>
+           <View>
                 <Text>{this.props.title}</Text>
                 <Text>{this.props.subtitle}</Text>
-            </BlackView>
+            </View>
         )
     }
 }
