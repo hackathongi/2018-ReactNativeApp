@@ -3,7 +3,6 @@ import { View } from 'react-native'
 import styled from 'styled-components'
 
 const Label = styled.Text`
-    font-family: Helvetica;
     font-size: 18;
     font-weight: 400;
 

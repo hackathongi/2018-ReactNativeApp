@@ -7,7 +7,9 @@ import ItemInfo from './ItemInfo'
 import Icon from './Icon'
 
 export class ListItem extends React.Component{
-    static Wrapper = styled.View`
+    static Wrapper = TouchableHighlight
+
+    static Content = styled.View`
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -26,23 +28,18 @@ export class ListItem extends React.Component{
         border-radius: 3px;
     `
 
-    static TouchableArea = TouchableHighlight
-
     render(){
+        const { title, subtitle, navigation } = this.props
         return(
-            <ListItem.Wrapper>
-                <ListItem.TouchableArea onPress={() => this.props.navigation.navigate('LlistaFuncionsDispositiu', {
-                        itemId: this.props.value.id,
-                        type: this.props.value.type,
-                    })} 
-                >
-                    <ListItem.IconBox></ListItem.IconBox>
-                    <ListItem.Info 
-                        title={this.props.value.title}
-                        subtitle={this.props.value.subtitle}    
-                    />
-                </ListItem.TouchableArea >
-            </ListItem.Wrapper>
+            <ListItem.Wrapper onPress={() => navigation.navigate('LlistaFuncionsDispositiu')} >
+                <ListItem.Content>
+                        <ListItem.IconBox />
+                        <ListItem.Info 
+                            title={title}
+                            subtitle={subtitle}    
+                        />
+                </ListItem.Content>
+            </ListItem.Wrapper >
         )
     }
 }
