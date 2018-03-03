@@ -5,16 +5,12 @@ import styled from 'styled-components'
 import ItemInfo from './ItemInfo'
 import Icon from './Icon'
 
-export class ListItem extends React.Component{
+export class ListFunctions extends React.Component{
 
     render(){
         return(
             <View>
-                <TouchableHighlight onPress={() => this.props.navigation.navigate('LlistaFuncionsDispositiu', {
-                    itemId: this.props.value.id,
-                    type: this.props.value.type,
-                    })} 
-                >
+                <TouchableHighlight onPress={() => this.props.navigation.navigate('LlistaFuncionsDispositiu')} >
                     <ItemInfo 
                         title={this.props.value.id}
                         subtitle={this.props.value.type}    
@@ -25,4 +21,4 @@ export class ListItem extends React.Component{
     }
 }
 
-export default withNavigation(ListItem)
+export default withNavigation(ListFunctions)
