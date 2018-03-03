@@ -1,22 +1,22 @@
 import React from 'react';
 import { StackNavigator } from 'react-navigation'
 import Home from '../screens/Home'
-import Control  from '../screens/Control'
-import Statistics  from '../screens/Statistics'
+import LlistaDispositius  from '../screens/LlistaDispositius'
+import Dispositiu  from '../screens/Dispositiu'
 
 export const Index = StackNavigator(
     {
       Home: {
         screen: Home,
       },
-      Control:{
-        screen: Control,
+      LlistaDispositius:{
+        screen: LlistaDispositius,
       },
-      Statistics:{
-        screen: Statistics
+      Dispositiu:{
+        screen: Dispositiu,
       },
     },
     {
-      initialRouteName: 'Control'
+      initialRouteName: 'LlistaDispositius'
     }
 );
