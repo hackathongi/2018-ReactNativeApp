@@ -39,23 +39,30 @@ export default class LlistaFuncionsDispositius extends React.Component{
         try{
             const res = await fetch(`http://192.192.193.155:5000/hub/`)
             const responseJson = await res.json()
-            
-            const actions = responseJson.map((actionData[this.props.navigation.state.id]['actions'], index) => {
-                return {
+
+            const { actions: cunrrentActions } = responseJson[this.props.navigation.state.id]
+
+            let actions = []
+            let index = 0
+
+            for (let action in cunrrentActions) {
+                actions.push({
                     id: index,
-                    label: capitalize(actionData.id),
-                    actionName: Object.keys(actionData[props.id]["actions"].id),
-                    onAction: () =>{
+                    label: capitalize(action),
+                    actionName: 'Envia',
+                    onAction: async () =>{
                         try{
-                            const res = await fetch(`http://192.192.193.155:5000/` + props.id + `/` + actionData.id)            
+                            const res = await fetch(`http://192.192.193.155:5000/${this.props.navigation.state.id}/${action}`)            
                         }
                         catch(error){
                             console.log('Error' . error) 
                         }
                     }
-                }
-            })
+                })
 
+                index++
+            }
+            
             this.setState({
                 actions
             })
