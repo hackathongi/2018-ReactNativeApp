@@ -53,7 +53,7 @@ export default class LlistaFuncionsDispositius extends React.Component{
                     actionName: 'Envia',
                     onAction: async () =>{
                         try{
-                            const res = await fetch(`http://192.192.193.155:5000/fieware/${this.props.navigation.state.params.id}/${action}`)            
+                            const res = await fetch(`http://192.192.193.155:5000/fiware/${this.props.navigation.state.params.id}/${action}`)            
                         }
                         catch(error){
                             console.log('Error' . error) 

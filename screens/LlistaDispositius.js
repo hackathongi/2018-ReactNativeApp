@@ -11,17 +11,22 @@ import ListItem from '../components/ListItem'
 const SensorWrapper = styled.View`
     display: flex;
     flex-direction: column;
+
+    background-color: white;
+
+    padding: 16px;
 `
 
 const SensorData = styled.View`
     display: flex; 
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-between;
 `
 
 export default class LlistaDispositius extends React.Component{
     static Wrapper = styled.View`
-        height: 100%;
+        display: flex;
+        flex-direction: column;
     `
 
     constructor (props) {
@@ -70,23 +75,27 @@ export default class LlistaDispositius extends React.Component{
                 <SensorWrapper>
                     <SensorData>
                         <Text>Llum:</Text>
-                        <Text>{sensorsData.fotoresistencia.value}</Text>
+                        <Text>
+                            {sensorsData.fotoresistencia.value < 166 ? 'Fosc' : 
+                            (166 < sensorsData.fotoresistencia.value < 166*2 ? 'Tenue' : 
+                            (sensorsData.fotoresistencia.value > 166*2 ? 'Clar' : '')) }
+                        </Text>
                     </SensorData>
                     <SensorData>
                         <Text>Temperatura:</Text>
-                        <Text>{sensorsData.temperatura.value}</Text>
+                        <Text>{sensorsData.temperatura.value} ºC</Text>
                     </SensorData>
                     <SensorData>
                         <Text>Distància:</Text>
-                        <Text>{sensorsData.distancia.value}</Text>
+                        <Text>{sensorsData.distancia.value} cm</Text>
                     </SensorData>
                     <SensorData>
                         <Text>Sò:</Text>
-                        <Text>{sensorsData.so.value}</Text>
+                        <Text>{sensorsData.so.value ? 'SI' : 'NO'}</Text>
                     </SensorData>
                     <SensorData>
                         <Text>Estat porta:</Text>
-                        <Text>{sensorsData.estatPorta.value}</Text>
+                        <Text>{sensorsData.estatPorta.value ? 'TANCADA' : 'OBERTA'}</Text>
                     </SensorData>
                 </SensorWrapper>
                 <List
@@ -105,7 +114,7 @@ export default class LlistaDispositius extends React.Component{
             const res = await fetch(`http://84.89.60.4/v2/entities`)
             const responseJson = await res.json()
 
-            const sesorsData = null
+            let sensorsData = null
             
             const devices = responseJson.map((deviceData, index) => {
                 if (deviceData.id === 'sensors') {
@@ -120,7 +129,7 @@ export default class LlistaDispositius extends React.Component{
             })
 
             this.setState({
-                devices,
+                devices: [devices[0], devices[1], devices[6], devices[7]],
                 sensorsData
             })
         }

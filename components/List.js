@@ -5,8 +5,6 @@ import styled from 'styled-components'
 
 class List extends React.Component{
     static Wrapper = styled.View`
-        height: 100%;
-
         background-color: white;
     `
     
