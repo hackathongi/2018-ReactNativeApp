@@ -29,7 +29,9 @@ export class ListItem extends React.Component{
     render(){
         const { title, subtitle, navigation } = this.props
         return(
-            <ListItem.Wrapper onPress={() => navigation.navigate('LlistaFuncionsDispositiu')} >
+            <ListItem.Wrapper onPress={() => navigation.navigate('LlistaFuncionsDispositiu', {
+                id: title.toLowerCase(),
+              })} >
                 <ListItem.Content>
                     <ListItem.IconBox>
                         <Icon gliph={title.toLowerCase()}/>
