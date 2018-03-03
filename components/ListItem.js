@@ -32,7 +32,7 @@ export class ListItem extends React.Component{
             <ListItem.Wrapper onPress={() => navigation.navigate('LlistaFuncionsDispositiu')} >
                 <ListItem.Content>
                     <ListItem.IconBox>
-                        <Icon gliph={'persiana'}/>
+                        <Icon gliph={title.toLowerCase()}/>
                     </ListItem.IconBox>
                     <View>
                         <Label>{title}</Label>
