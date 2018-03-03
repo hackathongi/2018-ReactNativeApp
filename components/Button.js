@@ -6,7 +6,10 @@ export default class Button extends React.Component{
 
     render(){
         return(
-
+            <View>
+                <TouchableHighlight >
+                </TouchableHighlight>
+            </View>
         )
     }
 }

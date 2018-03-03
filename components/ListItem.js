@@ -1,5 +1,5 @@
 import React from 'react'
-import { Image, Text, View } from 'react-native'
+import { Image, View } from 'react-native'
 import styled from 'styled-components'
 import ItemInfo from './ItemInfo'
 
